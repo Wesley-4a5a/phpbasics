@@ -4,24 +4,24 @@
 
   switch ($_REQUEST['todo']) {
     case 'create':
-      $afile = new fileHandler($_REQUEST['fileName']);
+      $afile = new fileHandler();
       $afile->createFile($_REQUEST['fileName'], $_REQUEST['fileContent']);
       // var_dump($afile->createFile());
       echo 'kureeaaate file';
       break;
     case 'update':
       $afile = new fileHandler($_REQUEST['fileName']);
-      $afile->updateFile($_REQUEST['fileName'], $_REQUEST['fileContent']);      
+      $afile->updateFile($_REQUEST['fileName'], $_REQUEST['fileContent']);
       echo 'updeet file';
       break;
     case 'delete':
-      $afile = new fileHandler($_REQUEST['fileName']);
-      var_dump($afile->deleteFile());
+      $afile = new fileHandler();
+      $afile->deleteFile($_REQUEST['fileName']);
       echo 'deleeet file';
       break;
     case 'read':
-      $afile = new fileHandler($_REQUEST['fileName']);
-      $afile->readFile($_REQUEST['fileName'], 'r');
+      $afile = new fileHandler($_REQUEST['selectedFile']);
+      $afile->readFile($_REQUEST['selectedFile'], 'r');
       echo 'reek file';
       break;
     case 'cmf':

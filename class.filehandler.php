@@ -21,25 +21,28 @@ class fileHandler {
 
   function readFile($fileName, $mode)
   {
-    $fileName = $fileName . '.txt';
+    $fileName = $fileName;
     echo '<form id="myForm" action="ass010_inputForm.php" method="post">';
-    echo '<input type="hidden" name="Content" value="' .file_get_contents($fileName).'"></form>';
-    echo '<script type="text/javascript">document.getElementById("myForm").submit();</script>';
+    echo '<input type="hidden" name="selectedFile" value="' .$_REQUEST['selectedFile'].'">';
+    echo '<input type="hidden" name="Content" value="' .file_get_contents($fileName).'">';
+    echo '</form><script type="text/javascript">document.getElementById("myForm").submit();</script>';
   }
 
   function updateFile($fileName, $fileContent){
       $fijl = $fileName . '.txt';
+      $fijl = fopen($fijl, 'w');
       fputs($fijl, $fileContent);
   }
 
-  function deleteFile(){
-
+  function deleteFile($fileName){
+    $fileName = $fileName . '.txt';
+    unlink($fileName);
   }
 
   function createMultipleFiles($fileArray){
     $explodedFile = explode(' ', $fileArray);
     foreach($explodedFile as $file){
-      $this->createFile($file, 'Dummy');
+      $this->createFile($file, '');
     }
   }
 
