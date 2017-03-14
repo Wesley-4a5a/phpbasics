@@ -1,19 +1,19 @@
 <?php
 
 	class dbHandler{
-		
+
 		private $server;
 		private $dbName;
 		private $user;
 		private $password;
-		
+
 		function __construct($server, $dbName, $user, $password)
 		{
 			$this->server = $server;
 			$this->dbName = $dbName;
 			$this->user = $user;
 			$this->password = $password;
-			
+
 			try
 			{
 				$this->conn = new PDO("mysql:host=$this->server;dbname=$this->dbName", $this->user, $this->password);
@@ -24,7 +24,7 @@
 				echo 'Connection failed: ' . $e->getMessage();
 			}
 		}
-		
+
 		function createData($sql)
 		{
 			try
@@ -37,7 +37,7 @@
 				return "Create failed: " . $e->getMessage();
 			}
 		}
-		
+
 		function deleteData($sql)
 		{
 			try
@@ -50,7 +50,7 @@
 				return "Delete failed: " . $e->getMessage();
 			}
 		}
-		
+
 		function updateData($sql)
 		{
 			try
@@ -64,27 +64,27 @@
 				return "Update failed: " . $e->getMessage();
 			}
 		}
-		
+
 		function readData($sql)
 		{
-			try 
+			try
 			{
 				$stmt = $this->conn->prepare($sql);
 				$stmt->execute();
 				$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 				return $result;
-			} 
-			catch(PDOException $e) 
+			}
+			catch(PDOException $e)
 			{
 				return "Error: " . $sql . "<br>" . $e->getMessage();
 			}
 		}
-		
+
 		function __destruct()
 		{
 			$this->conn = null;
 		}
-		
+
 	}
 
 ?>
