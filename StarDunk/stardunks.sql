@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 21 mrt 2017 om 14:48
--- Serverversie: 10.1.21-MariaDB
--- PHP-versie: 5.6.30
+-- Generation Time: Mar 21, 2017 at 04:30 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -36,7 +36,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`product_id`, `product_type_code`, `supplier_id`, `product_name`, `product_price`, `other_product_details`) VALUES
@@ -44,30 +44,33 @@ INSERT INTO `products` (`product_id`, `product_type_code`, `supplier_id`, `produ
 (2, 1, 1, 'Chocolate', '1.49', '1 pc.'),
 (3, 1, 1, 'Maple', '1.49', '1 pc.'),
 (4, 2, 2, 'Dunkaccino', '1.69', 'Small'),
-(5, 3, 3, 'Steak Long Jim', '2.29', 'Steak wrap'),
-(6, 1, 1, '', '0.00', ''),
-(7, 1, 1, '', '0.00', ''),
-(8, 1, 1, 'Taart', '1.29', 'Taart is een lie');
+(5, 3, 3, 'Steak Long Jim', '2.29', 'Steakasdasd'),
+(8, 1, 1, 'Taart', '1.29', 'Taart is een lie'),
+(9, 1, 1, 'Dunk&Donut', '0.89', 'Smaller than expected'),
+(15, 1, 1, 'hgf', '2.00', 'aa'),
+(16, 1, 1, 'Taart', '89.00', 'Taart is een lie'),
+(17, 1, 1, 'Taartje', '231.20', 'Wel duur'),
+(18, 1, 1, '34', '23.00', 'wqe');
 
 --
--- Indexen voor geëxporteerde tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Indexen voor tabel `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
 
 --
--- AUTO_INCREMENT voor geëxporteerde tabellen
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT voor een tabel `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
