@@ -17,3 +17,10 @@
     clear: both;
     display: table;
 }
+
+.crudButton{
+  color:white;
+  background-color: #3277ff;
+  border-radius: 15px;
+  font-size: 1.5em;
+}
