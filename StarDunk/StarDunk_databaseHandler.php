@@ -4,6 +4,7 @@
 
 	$handler = new dbHandler('localhost', 'stardunks', 'root', '');
 	echo '<header><link rel="stylesheet" type="text/css" href="StarDunk.css"></header>';
+	echo '<center><h2>Dunkin Donuts</h2></center>';
 
 		// Insert data
 		// $sql = "INSERT INTO `crudDB`.`users` VALUES (NULL, 'Firstname', 'Lastname', 'UserCity');";
