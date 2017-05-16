@@ -8,11 +8,11 @@ class fileHandler{
     var $filename;
     var $extension;
     var $size;
-    
+
     function __construct(){
 //        $this->filename = $filename;
     }
-    
+
     function read($filename, $mode){
         fopen($filename, $mode);
     }
