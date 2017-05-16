@@ -2,10 +2,9 @@
 
 include 'ass016_databaseHandlerClass.php';
 
-$header = new Web('header.html', getcwd());
-$content = new Web('hond.txt', getcwd());
-$footer = new Web('footer.html', getcwd());
-print $header->showContent() . $content->showContent() . $footer->showContent();
+$createPage = new Web(getcwd(), "header.html", "hond.txt", "footer.html");
+echo $createPage->showContent();
+
 //HIJ WIL GET COMPLETE PAGE
 //  var_dump($hond);
 
@@ -14,10 +13,11 @@ print $header->showContent() . $content->showContent() . $footer->showContent();
   class Pagina{
 
     //initialize properties
-    public $content;
     public $tableHeader;
     public $header;
+    public $content;
     public $footer;
+
 
     function __construct(){
     }
@@ -33,30 +33,45 @@ print $header->showContent() . $content->showContent() . $footer->showContent();
 
     private $url;
     private $navigation;
-
     public $filePath;
     public $fileName;
+    public $pageContent;
 
-    function __construct($fileName, $filePath){
-      $this->fileName = $fileName;
-      $this->filePath = $filePath;
+    function __construct($filePath, $header, $content, $footer){
+      $this->content = $content;
+			$this->header = $header;
+			$this->footer = $footer;
+			$this->filePath = $filePath;
     }
 
-    function createContent($header, $footer, $content){
-      $this->$header = $header;
-      $this->$footer = $footer;
-      $this->$content = $content;
+    function readFile($fileName){
+      $fileCont = fopen($this->filePath . '/' . $fileName, "r");
+			return fread($fileCont, 5000);
     }
 
+    //read header file
+    function createHeader(){
+			return $this->readFile($this->header);
+    }
+
+    //read create file
+    function createContent(){
+			return $this->readFile($this->content);
+    }
+
+    //read footer file
+    function createFooter(){
+			return $this->readFile($this->footer);
+    }
+
+    //Combine header/content/footer and post it on a page
     function showContent(){
-      $handleFile = fopen($this->filePath . '/' . $this->fileName, 'r');
-      return fread($handleFile, '1000');
-      $pageContent .= $handleFile;
+      $this->pageContent .= $this->createHeader();
+      $this->pageContent .= $this->createContent();
+      $this->pageContent .= $this->createFooter();
+      return $this->pageContent;
     }
 
-    function getContent(){
-      return $this->header.$this->content.$this->footer;
-    }
 
     function __destruct(){
     }
@@ -64,6 +79,7 @@ print $header->showContent() . $content->showContent() . $footer->showContent();
   }
 
 //  Run web class to open the file
+
 
 
 
@@ -83,6 +99,10 @@ print $header->showContent() . $content->showContent() . $footer->showContent();
     }
 
   }
+
+
+
+
 
   // create a table class.
     class Table extends Web{
