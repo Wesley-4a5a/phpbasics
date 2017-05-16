@@ -1,20 +1,25 @@
 <?php
 
+include 'ass016_databaseHandlerClass.php';
 
-$hond = new Pagina();
+$header = new Web('header.html', getcwd());
+$content = new Web('hond.txt', getcwd());
+$footer = new Web('footer.html', getcwd());
+print $header->showContent() . $content->showContent() . $footer->showContent();
+//HIJ WIL GET COMPLETE PAGE
 //  var_dump($hond);
-//pagina class to create an object
+
+//pagina class to create a page
+
   class Pagina{
 
     //initialize properties
-    public $content = array("text"=>"", "image"=>"", "audio"=>"");
+    public $content;
     public $tableHeader;
+    public $header;
     public $footer;
 
     function __construct(){
-    }
-
-    function createPage(){
     }
 
     function __destruct(){
@@ -28,8 +33,7 @@ $hond = new Pagina();
 
     private $url;
     private $navigation;
-    public $tableData = array();
-    public $tableHeader = array();
+
     public $filePath;
     public $fileName;
 
@@ -38,9 +42,20 @@ $hond = new Pagina();
       $this->filePath = $filePath;
     }
 
+    function createContent($header, $footer, $content){
+      $this->$header = $header;
+      $this->$footer = $footer;
+      $this->$content = $content;
+    }
+
     function showContent(){
       $handleFile = fopen($this->filePath . '/' . $this->fileName, 'r');
       return fread($handleFile, '1000');
+      $pageContent .= $handleFile;
+    }
+
+    function getContent(){
+      return $this->header.$this->content.$this->footer;
     }
 
     function __destruct(){
@@ -49,8 +64,7 @@ $hond = new Pagina();
   }
 
 //  Run web class to open the file
-    $fileTest = new Web('hond.txt', getcwd());
-    print $fileTest->showContent();
+
 
 
 // create a papier child class.
@@ -59,6 +73,8 @@ $hond = new Pagina();
     private $cover;
     private $bladzijde;
     private $auteur;
+    public $tableData = array();
+    public $tableHeader = array();
 
     function __construct(){
     }
